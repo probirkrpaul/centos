@@ -1,0 +1,12 @@
+#!/bin/sh
+
+PROXY_PORT=3128
+
+# Allow squid access from anywhere
+iptables -A INPUT -p tcp --dport $PROXY_PORT -j ACCEPT
+
+# Save iptables
+/usr/libexec/iptables/iptables.init save
+
+# Restart iptables
+systemctl restart iptables
