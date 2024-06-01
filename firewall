@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PROXY_PORT=3128
+
+# Allow squid access from anywhere
+firewall-cmd --zone=public --add-port=$PROXY_PORT/tcp --permanent
+
+# Reload rules
+firewall-cmd --reload
